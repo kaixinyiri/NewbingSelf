@@ -1,6 +1,6 @@
 [
     {
-        "name":"不要搜索",
+        "name":"不要搜索1",
         "tags":"聊天,对话",
         "replaceRegExp":"^((.*\\n*)*)$",
         "replaceTo":"$1;不要搜索"
