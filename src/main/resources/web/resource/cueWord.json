@@ -1,9 +1,9 @@
 [
     {
-        "name":"不要搜索1",
+        "name":"不要搜索",
         "tags":"聊天,对话",
         "replaceRegExp":"^((.*\\n*)*)$",
-        "replaceTo":"$1;不要搜索"
+        "replaceTo":"$1，不要搜索(请在下面输入框中直接输入想要说的话，然后点击发送)"
     },
     {
         "提示词来源":"https://github.com/PlexPt/awesome-chatgpt-prompts-zh",
