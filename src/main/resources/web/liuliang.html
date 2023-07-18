@@ -99,15 +99,11 @@
       }
     });
 
-    // 给复制按钮元素添加一个 click 事件监听器
+      // 给复制按钮元素添加一个 click 事件监听器
     copyButton.addEventListener("click", function() {
-      // 判断内容元素的 display 属性是否为 none
-      if (content.style.display === "none") {
-        // 如果是 none，表示内容元素是隐藏的，提示用户先显示内容再复制
-        alert("请先显示内容再复制");
-        console.log("没有复制成功"); // 打印一条信息，表示没有复制成功
-      } else {
-        // 如果不是 none，表示内容元素是显示的，创建一个临时的输入框元素，并将原始文本赋值给它
+      // 判断内容元素的文本内容是否和原始文本不同
+      if (content.textContent !== originalText) {
+        // 如果不同，说明用户已经点击了显示按钮，创建一个临时的输入框元素，并将原始文本赋值给它
         let tempInput = document.createElement("input");
         tempInput.value = originalText;
         // 将临时输入框元素添加到文档中，并选中它的文本内容
@@ -119,6 +115,10 @@
         console.log("复制了内容"); // 打印一条信息，表示复制了内容
         // 将临时输入框元素从文档中移除
         document.body.removeChild(tempInput);
+      } else {
+        // 如果相同，说明用户没有点击显示按钮，提示用户先显示内容再复制
+        alert("请先显示内容再复制");
+        console.log("没有复制成功"); // 打印一条信息，表示没有复制成功
       }
     });
   </script>
