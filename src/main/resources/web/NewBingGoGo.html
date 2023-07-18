@@ -18,24 +18,34 @@
     <script>
 window.onload = function() {
   var buttonContainer = document.getElementById("buttonContainer");
-  buttonContainer.addEventListener("click", function(event) {
-    var button = event.target;
-    var file = button.dataset.file;
-    fetch(file)
-      .then(function(response) {
+buttonContainer.addEventListener("click", function(event) {
+  var button = event.target;
+  var file = button.dataset.file;
+  fetch(file)
+    .then(function(response) {
+      // 检查响应对象的状态码是否是 200
+      if (response.status === 200) {
+        // 如果是 200，表示请求成功，继续获取响应对象的正文内容
         return response.text();
-      })
-      .then(function(text) {
-        navigator.clipboard.writeText(text)
-          .then(function() {
-            alert("已复制到剪贴板，请打开软件后按 ctrl+v 进行粘贴");
-          })
-          .catch(function(error) {
-            alert("复制失败：" + error);
-          });
-      });
-  });
-};
+      } else {
+        // 如果不是 200，表示请求失败，抛出一个错误
+        throw new Error("请求失败，状态码：" + response.status);
+      }
+    })
+    .then(function(text) {
+      // 把响应对象的正文内容复制到剪贴板上
+      return navigator.clipboard.writeText(text);
+    })
+    .then(function() {
+      // 显示已经复制到剪贴板上的提示框
+      alert("已复制到剪贴板，请打开软件后按 ctrl+v 进行粘贴");
+    })
+    .catch(function(error) {
+      // 显示复制失败的提示框，并显示错误信息
+      alert("复制失败：" + error);
+    });
+});
+
 
     // 定义一个函数，根据图片的src属性来输入不同的文字	   
     const GRAMMARGPT_INTRO = `
