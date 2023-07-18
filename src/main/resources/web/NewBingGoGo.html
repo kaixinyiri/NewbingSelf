@@ -4,32 +4,41 @@
 <head>
 
     <style>
-	 /* 设置图片为行内块元素 */
+	 /* 设置表格为无框 */
+    table {
+      border: none;
+    }
+
+    /* 设置单元格为无框 */
+    td {
+      border: none;
+    }
+
+    /* 设置图片为行内块元素 */
     img {
       display: inline-block;
     }
 
-    /* 设置图片A顶对齐，图片B中间对齐，图片C底对齐 */
-    img:nth-child(1) {
-      vertical-align: top;
+    /* 设置表格长度为88% */
+    table {
+      width: 88%;
     }
 
-    img:nth-child(2) {
+    /* 设置第一列宽度为80% */
+    td:first-child {
+      width: 80%;
+    }
+
+    /* 设置第一列单元格内图片垂直居中和水平居中 */
+    td:first-child {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    /* 设置其他单元格内图片垂直居中 */
+    td:not(:first-child) {
       vertical-align: middle;
     }
-
-    img:nth-child(3) {
-      vertical-align: bottom;
-    }
-
-    /* 设置容器的高度和行高 */
-    .containerab {
-      height: 140px;
-      line-height: 140px;
-    }
-        #images1 {
-            white-space: nowrap;
-        }
     </style>
     <meta charset="utf-8">
     <title id="docTitle">NewBingGoGo:聊天啦啦啦啦</title>
@@ -559,16 +568,23 @@ function inputTextByImage(image) {
 	   </a>
              </div>
 	 <div style="text-align: center;">
-              <div class="containerab">
-   		 <!-- 插入图片A，长高为140 -->
-    			<img src="./img/jiedian.png" height="auto" width="80%">
-    			<!-- 插入图片B，长高为40 -->
-    			<img src="./img/anjian1.png" width="200">
-   			 <!-- 插入图片C，长高为40 -->
-    			<img src="./img/anjian2.png" width="200">
-    			<!-- 插入图片D，长高为40 -->
-    			<img src="./img/anjian3.png" width="200">
- 	 </div>
+		 <table>
+       			 <tr>
+      				<!-- 插入图片A，并且让它跨越三行 -->
+     				 <td rowspan="3"><img src="./img/jiedian.png" height="140" width="140"></td>
+     				 <!-- 插入图片B -->
+      				<td><img src="./img/anjian1.png" ></td>
+   			 </tr>
+   			 <tr>
+      				<!-- 插入图片C -->
+      				<td><img src="./img/anjian2.png" ></td>
+    			</tr>
+    			<tr>
+     				 <!-- 插入图片D -->
+      				<td><img src="./img/anjian3.png" ></td>
+    			</tr>
+  		</table>
+              
                         
              <img src="./img/tixing.png" alt="使用警告"  style="width: 88%; display: inline-block; vertical-align:middle;">
            
