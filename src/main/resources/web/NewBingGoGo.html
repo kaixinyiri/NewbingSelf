@@ -29,9 +29,12 @@ window.onload = function() {
     try {
       // 使用 await 关键字来等待 fetch 方法返回一个响应对象
       var response = await fetch(file);
-      // 检查响应对象的状态码是否是 200
-      if (response.status === 200) {
-        // 如果是 200，表示请求成功，继续获取响应对象的正文内容
+      // 检查响应对象的状态码是否是 404
+      if (response.status === 404) {
+        // 如果是 404，表示请求的资源不存在，显示一个错误信息
+        alert("文件不存在，请检查文件地址是否正确");
+      } else {
+        // 如果不是 404，表示请求成功或其他情况，继续获取响应对象的正文内容
         var text = await response.text();
         // 检查响应对象的正文内容是否为空
         if (text) {
@@ -43,9 +46,6 @@ window.onload = function() {
           // 如果为空，显示一个提示框
           alert("文件内容为空，请检查文件是否存在或是否有内容");
         }
-      } else {
-        // 如果不是 200，表示请求失败，抛出一个错误
-        throw new Error("请求失败，状态码：" + response.status);
       }
     } catch (error) {
       // 在 catch 块中显示复制失败的提示框，并显示错误信息
