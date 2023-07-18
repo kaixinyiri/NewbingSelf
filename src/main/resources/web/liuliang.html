@@ -81,27 +81,15 @@
     // 获取复制按钮元素
     let copyButton = document.getElementById("copy-button");
     
-    // 给按钮元素添加一个 click 事件监听器
+     // 给按钮元素添加一个 click 事件监听器
     button.addEventListener("click", function() {
       // 判断内容元素的 display 属性是否为 none
       if (content.style.display === "none") {
         // 如果是 none，表示内容元素是隐藏的，将 display 属性设置为 block，显示内容元素
         content.style.display = "block";
-        // 将按钮元素的文本内容设置为正在处理
-        button.textContent = "正在处理"; // 添加这一行
+        // 将按钮元素的文本内容设置为显示中
+        button.textContent = "显示中";
         console.log("显示了内容"); // 打印一条信息，表示显示了内容
-        // 设置一个定时器，在一秒后执行解密操作
-        setTimeout(function() {
-          // 判断内容是否已经加密
-          if (encrypted) {
-            // 如果已经加密，将内容解密并显示
-            content.textContent = atob(content.textContent);
-            // 将加密状态设置为 false
-            encrypted = false;
-          }
-          // 将按钮元素的文本内容设置为显示中
-          button.textContent = "显示中"; // 添加这一行
-        }, 1000); // 设置延迟时间为一秒
       } else {
         // 如果不是 none，表示内容元素是显示的，将 display 属性设置为 none，隐藏内容元素
         content.style.display = "none";
@@ -111,10 +99,10 @@
       }
     });
 
-        // 给复制按钮元素添加一个 click 事件监听器
+    // 给复制按钮元素添加一个 click 事件监听器
     copyButton.addEventListener("click", function() {
       // 判断内容元素的 display 属性是否为 none
-      if (content.style.display === "none" || encrypted) { // 添加一个判断条件，如果内容已经加密，也提示用户先显示再复制
+      if (content.style.display === "none") {
         // 如果是 none，表示内容元素是隐藏的，提示用户先显示内容再复制
         alert("请先显示内容再复制");
         console.log("没有复制成功"); // 打印一条信息，表示没有复制成功
