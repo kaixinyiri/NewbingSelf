@@ -17,15 +17,15 @@
 
     <script>
 window.onload = function() {
-  // 声明一个变量 buttons，并赋值为网页中所有的按钮元素
-  var buttons = document.querySelectorAll("input");
+  // 声明一个变量 buttons，并赋值为网页中所有的图片按钮元素
+  var buttons = document.querySelectorAll("input[type='image']");
   // 使用 for 循环遍历 buttons 数组
   for (var i = 0; i < buttons.length; i++) {
-    // 给每个按钮元素添加一个 click 事件监听器
+    // 给每个图片按钮元素添加一个 click 事件监听器
     buttons[i].addEventListener("click", async function(event) {
       // 使用 try...catch 语句来捕获可能发生的错误
       try {
-        // 获取被点击的按钮元素的 id 属性值
+        // 获取被点击的图片按钮元素的 id 属性值
         var buttonId = event.target.id;
         // 根据 id 属性值，找到对应的 data-file 属性值
         var file = document.getElementById(buttonId).dataset.file;
@@ -64,7 +64,6 @@ window.onload = function() {
     });
   }
 };
-
     // 定义一个函数，根据图片的src属性来输入不同的文字	   
     const GRAMMARGPT_INTRO = `
 请模拟下面角色
