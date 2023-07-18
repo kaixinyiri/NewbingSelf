@@ -17,7 +17,7 @@
 
     <script>
 
-window.addEventListener('load', function()  {
+window.onload= function()  {
   // 声明一个变量 buttons，并赋值为网页中所有的图片按钮元素
   var buttons = document.querySelectorAll("input[type='image']");
   // 使用 for 循环遍历 buttons 数组
@@ -65,7 +65,7 @@ window.addEventListener('load', function()  {
       }
     });
   }
-});
+};
     // 定义一个函数，根据图片的src属性来输入不同的文字	   
     const GRAMMARGPT_INTRO = `
 请模拟下面角色
