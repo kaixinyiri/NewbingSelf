@@ -15,7 +15,29 @@
     <link rel="stylesheet" href="./css/bing.css">
 
 
-    <script>	   
+    <script>
+
+
+
+var buttonContainer = document.getElementById("buttonContainer");
+buttonContainer.addEventListener("click", function(event) {
+  var button = event.target;
+  var file = button.dataset.file;
+  fetch(file)
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(text) {
+      navigator.clipboard.writeText(text)
+        .then(function() {
+          alert("已复制到剪贴板，请打开软件后按 ctrl+v 进行粘贴");
+        })
+        .catch(function(error) {
+          alert("复制失败：" + error);
+        });
+    });
+});
+
     // 定义一个函数，根据图片的src属性来输入不同的文字	   
     const GRAMMARGPT_INTRO = `
 请模拟下面角色
@@ -541,9 +563,10 @@ function inputTextByImage(image) {
 		 
             </div>
 		 <div id="images1">
-		 <input type="image" src="./img/anjian1.png"   style="max-width: 88%;  ">
-		 <input type="image" src="./img/anjian2.png"   style="max-width: 88%; ">
-		<input type="image" src="./img/anjian3.png"  style="max-width: 88%; ">
+
+		 <button id="copyButton1" data-file="text1.txt" type="image" src="./img/anjian1.png"   style="max-width: 88%;  "></button>
+		 <button id="copyButton1" data-file="text1.txt" type="image" src="./img/anjian2.png"   style="max-width: 88%; "></button>
+		<button id="copyButton1" data-file="text1.txt" type="image" src="./img/anjian3.png"  style="max-width: 88%; "></button>
             </div>
                         
              <img src="./img/tixing.png" alt="使用警告"  style="width: 88%; display: inline-block; vertical-align:middle;">
