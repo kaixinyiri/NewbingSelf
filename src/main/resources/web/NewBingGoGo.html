@@ -4,13 +4,29 @@
 <head>
 
     <style>
-	.containerab {
- 		 width: 88%;
-		height: 80px;
-		margin: auto; 
-		line-height: 80px; /* 设置行高与父元素高度相同 */
-	}
+	 /* 设置图片为行内块元素 */
+    img {
+      display: inline-block;
+    }
 
+    /* 设置图片A顶对齐，图片B中间对齐，图片C底对齐 */
+    img:nth-child(1) {
+      vertical-align: top;
+    }
+
+    img:nth-child(2) {
+      vertical-align: middle;
+    }
+
+    img:nth-child(3) {
+      vertical-align: bottom;
+    }
+
+    /* 设置容器的高度和行高 */
+    .containerab {
+      height: 200px;
+      line-height: 200px;
+    }
         #images1 {
             white-space: nowrap;
         }
@@ -544,12 +560,15 @@ function inputTextByImage(image) {
              </div>
 	 <div style="text-align: center;">
               <div class="containerab">
-                 <img src="./img/jiedian.png" alt="流量"  style="float: left; width: 80%; display: inline-block; vertical-align:middle;">		
-                 <button style="float: right;   width: 150px;   height: 20px;   margin: 10px;" id="button1">流量1</button>
-                 <button  style="float: right;   width: 150px;   height: 20px;   margin: 10px;" id="button2">流量2</button>
-                 <button  style="float: right;   width: 150px;   height: 20px;   margin: 0px;" id="button3">流量3</button>
-		    
-             </div>
+   		 <!-- 插入图片A，长高为140 -->
+    			<img src="./img/jiedian.png" height="140" width: 80%>
+    			<!-- 插入图片B，长高为40 -->
+    			<img src="./img/anjian1.png" height="40" width="40">
+   			 <!-- 插入图片C，长高为40 -->
+    			<img src="./img/anjian2.png" height="40" width="40">
+    			<!-- 插入图片D，长高为40 -->
+    			<img src="./img/anjian3.png" height="40" width="40">
+ 	 </div>
                         
              <img src="./img/tixing.png" alt="使用警告"  style="width: 88%; display: inline-block; vertical-align:middle;">
            
