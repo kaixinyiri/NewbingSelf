@@ -111,10 +111,10 @@
       }
     });
 
-    // 给复制按钮元素添加一个 click 事件监听器
+        // 给复制按钮元素添加一个 click 事件监听器
     copyButton.addEventListener("click", function() {
       // 判断内容元素的 display 属性是否为 none
-      if (content.style.display === "none") {
+      if (content.style.display === "none" || encrypted) { // 添加一个判断条件，如果内容已经加密，也提示用户先显示再复制
         // 如果是 none，表示内容元素是隐藏的，提示用户先显示内容再复制
         alert("请先显示内容再复制");
         console.log("没有复制成功"); // 打印一条信息，表示没有复制成功
@@ -136,5 +136,3 @@
   </script>
 </body>
 </html>
-复制
-
