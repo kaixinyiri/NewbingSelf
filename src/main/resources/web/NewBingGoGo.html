@@ -17,35 +17,42 @@
 
     <script>
 window.onload = function() {
+  // 声明一个变量 buttonContainer，并赋值为网页中 id 为 buttonContainer 的元素
   var buttonContainer = document.getElementById("buttonContainer");
-buttonContainer.addEventListener("click", function(event) {
-  var button = event.target;
-  var file = button.dataset.file;
-  fetch(file)
-    .then(function(response) {
+  // 给 buttonContainer 元素添加一个 click 事件监听器
+  buttonContainer.addEventListener("click", async function(event) {
+    // 声明一个变量 button，并赋值为事件对象的 target 属性，即被点击的按钮
+    var button = event.target;
+    // 声明一个变量 file，并赋值为按钮的 data-file 属性，即文件的地址
+    var file = button.dataset.file;
+    // 使用 try...catch 语句来捕获可能发生的错误
+    try {
+      // 使用 await 关键字来等待 fetch 方法返回一个响应对象
+      var response = await fetch(file);
       // 检查响应对象的状态码是否是 200
       if (response.status === 200) {
         // 如果是 200，表示请求成功，继续获取响应对象的正文内容
-        return response.text();
+        var text = await response.text();
+        // 检查响应对象的正文内容是否为空
+        if (text) {
+          // 如果不为空，使用 await 关键字来等待 navigator.clipboard.writeText 方法把正文内容复制到剪贴板上
+          await navigator.clipboard.writeText(text);
+          // 显示已经复制到剪贴板上的提示框
+          alert("已复制到剪贴板，请打开软件后按 ctrl+v 进行粘贴");
+        } else {
+          // 如果为空，显示一个提示框
+          alert("文件内容为空，请检查文件是否存在或是否有内容");
+        }
       } else {
         // 如果不是 200，表示请求失败，抛出一个错误
         throw new Error("请求失败，状态码：" + response.status);
       }
-    })
-    .then(function(text) {
-      // 把响应对象的正文内容复制到剪贴板上
-      return navigator.clipboard.writeText(text);
-    })
-    .then(function() {
-      // 显示已经复制到剪贴板上的提示框
-      alert("已复制到剪贴板，请打开软件后按 ctrl+v 进行粘贴");
-    })
-    .catch(function(error) {
-      // 显示复制失败的提示框，并显示错误信息
+    } catch (error) {
+      // 在 catch 块中显示复制失败的提示框，并显示错误信息
       alert("复制失败：" + error);
-    });
-});
-
+    }
+  });
+};
 
     // 定义一个函数，根据图片的src属性来输入不同的文字	   
     const GRAMMARGPT_INTRO = `
