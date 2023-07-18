@@ -2,46 +2,10 @@
 <html lang="zh-cn">
 
 <head>
-
-    <style>
-	 /* 设置表格为无框 */
-    table {
-      border: none;
-    }
-
-    /* 设置单元格为无框 */
-    td {
-      border: none;
-    }
-
-    /* 设置图片为行内块元素 */
-    img {
-      display: inline-block;
-    }
-
-    /* 设置表格长度为88% */
-    table {
-      width: 88%;
-    }
-
-    /* 设置第一列宽度为80% */
-    td:first-child {
-      width: 80%;
-    }
-
-    /* 设置第一列单元格内图片垂直居中和水平居中 */
-    td:first-child {
-      vertical-align: middle;
-      text-align: center;
-    }
-
-    /* 设置其他单元格内图片垂直居中 */
-    td:not(:first-child) {
-         display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-    }
+ <style>
+        #images1 {
+            white-space: nowrap;
+        }
     </style>
     <meta charset="utf-8">
     <title id="docTitle">NewBingGoGo:聊天啦啦啦啦</title>
@@ -587,7 +551,10 @@ function inputTextByImage(image) {
       				<td><img src="./img/anjian3.png"  width="50" ></td>
     			</tr>
   		</table>
-              
+               <div id="images1">
+		 <input type="image" src="./img/jiedian.png" data-role="Prompt_Generator"  onclick="inputTextByImage(this)" style="max-width: 88%;">
+		 
+            </div>
                         
              <img src="./img/tixing.png" alt="使用警告"  style="width: 88%; display: inline-block; vertical-align:middle;">
            
