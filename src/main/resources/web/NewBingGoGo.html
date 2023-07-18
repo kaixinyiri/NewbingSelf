@@ -16,7 +16,13 @@
 
 
     <script>
+function setHeight() {
+  var input = document.getElementById("copyButton1"); // 获取 input 元素
+  var height = input.offsetHeight; // 获取元素的高度
+  input.style.fontSize = height + "px"; // 设置字体高度等于元素高度
+}
 
+	    
 window.onload = function() {
   // 声明一个变量 buttonContainer，并赋值为网页中 id 为 buttonContainer 的元素
   var buttonContainer = document.getElementById("buttonContainer");
@@ -580,6 +586,7 @@ function inputTextByImage(image) {
             </div>
 		 <div id="images1">
 		<div id="buttonContainer">
+			<p id="copyButton1" onload="setHeight()">电脑端：</p>
 		<p style="display: inline-block; vertical-align: middle;color: red;">电脑端：</p>
 		 <input id="copyButton1" data-file="./img/1.txt" type="image" src="./img/anjian1.png"   style="max-width: 88%;  ">
 		 <input id="copyButton2" data-file="./img/2.txt" type="image" src="./img/anjian2.png"   style="max-width: 88%; ">
