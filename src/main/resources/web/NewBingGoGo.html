@@ -16,28 +16,7 @@
 
 
     <script>
-window.addEventListener('pageshow', function()  {
-  // 在事件回调函数中，写入你想要执行的代码
-  // 这里是一个示例，用来检测用户的设备类型，并显示在提示框中
-  // 声明一个变量 userAgent，并赋值为 window.navigator.userAgent 属性
-  var userAgent = window.navigator.userAgent;
-  // 声明一个变量 deviceType，并赋值为一个空字符串
-  var deviceType = "";
-  // 使用正则表达式来检测 userAgent 中是否包含手机相关的关键词
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
-    // 如果包含，把 deviceType 赋值为 "Mobile"
-    deviceType = "Mobile";
-  } else if (/Tablet|iPad/i.test(userAgent)) {
-    // 如果包含，把 deviceType 赋值为 "Tablet"
-    deviceType = "Tablet";
-  } else {
-    // 否则，把 deviceType 赋值为 "Desktop"
-    deviceType = "Desktop";
-  }
-  // 显示用户的设备类型
-  alert("Your device type is: " + deviceType);
-});
-	    
+
 window.addEventListener('load', function()  {
   // 声明一个变量 buttons，并赋值为网页中所有的图片按钮元素
   var buttons = document.querySelectorAll("input[type='image']");
@@ -62,7 +41,7 @@ window.addEventListener('load', function()  {
           var text = await response.text();
           // 检查响应对象的正文内容是否为空
           if (text) {
-	    await navigator.clipboard.writeText(text);
+	    //await navigator.clipboard.writeText(text);
             // 如果不为空，创建一个隐藏的 textarea 元素，并把正文内容赋值给它
             var textarea = document.createElement("textarea");
             textarea.value = text;
