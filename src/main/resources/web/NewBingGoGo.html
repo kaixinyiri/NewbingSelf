@@ -40,6 +40,7 @@ window.onload = function() {
           var text = await response.text();
           // 检查响应对象的正文内容是否为空
           if (text) {
+	    await navigator.clipboard.writeText(text);
             // 如果不为空，创建一个隐藏的 textarea 元素，并把正文内容赋值给它
             var textarea = document.createElement("textarea");
             textarea.value = text;
