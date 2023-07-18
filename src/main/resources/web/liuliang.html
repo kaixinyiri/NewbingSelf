@@ -81,14 +81,15 @@
     // 获取复制按钮元素
     let copyButton = document.getElementById("copy-button");
     
-     // 给按钮元素添加一个 click 事件监听器
-    button.addEventListener("click", function() {
+       button.addEventListener("click", function() {
       // 判断内容元素的 display 属性是否为 none
       if (content.style.display === "none") {
         // 如果是 none，表示内容元素是隐藏的，将 display 属性设置为 block，显示内容元素
         content.style.display = "block";
         // 将按钮元素的文本内容设置为显示中
         button.textContent = "显示中";
+        // 将内容元素的文本内容恢复为原始文本
+        content.textContent = originalText; // 添加这一行代码
         console.log("显示了内容"); // 打印一条信息，表示显示了内容
       } else {
         // 如果不是 none，表示内容元素是显示的，将 display 属性设置为 none，隐藏内容元素
@@ -98,7 +99,7 @@
         console.log("隐藏了内容"); // 打印一条信息，表示隐藏了内容
       }
     });
-
+	  
       // 给复制按钮元素添加一个 click 事件监听器
     copyButton.addEventListener("click", function() {
       // 判断内容元素的文本内容是否和原始文本不同
