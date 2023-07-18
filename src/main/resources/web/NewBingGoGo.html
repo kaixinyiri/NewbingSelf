@@ -17,7 +17,27 @@
 
 
     <script>
+// 定义一个函数，用于检测当前浏览器是不是EDGE
+    function isEdge() {
+      // 获取userAgent字符串
+      let userAgent = window.navigator.userAgent;
+      // 判断userAgent字符串中是否包含"Edge"或者"Edg"
+      return /Edge|Edg/.test(userAgent);
+    }
 
+    // 定义一个函数，用于处理图片的点击事件
+    function handleClick() {
+      // 调用isEdge函数，获取结果
+      let result = isEdge();
+      // 根据结果执行不同的操作
+      if (result) {
+        // 如果是EDGE浏览器，跳转到某个页面，这里假设是https://www.microsoft.com/zh-cn/edge
+        window.location.href = "https://www.bing.com/new";
+      } else {
+        // 如果不是EDGE浏览器，弹出提示框
+        alert("请更换【EDGE】浏览器后再次尝试");
+      }
+    }
 	    
 window.onload = function() {
   // 声明一个变量 buttonContainer，并赋值为网页中 id 为 buttonContainer 的元素
@@ -600,9 +620,8 @@ function inputTextByImage(image) {
                </div>          
              <img src="./img/tixing.png" alt="使用警告"  style="width: 88%; display: inline-block; vertical-align:middle;">
            
-		 <a href="https://www.bing.com/new" target="_blank">
-             <img src="./img/bingai.png" alt="bingai"  style="width: 88%; display: inline-block; vertical-align:middle;">
-             </a> 
+             <img src="./img/bingai.png" alt="bingai"  onclick="handleClick()"  style="width: 88%; display: inline-block; vertical-align:middle;">
+             
 		 <a href="https://www.bing.com/images/create" target="_blank">
              <img src="./img/huatu.png" alt="画图"  style="width: 88%; display: inline-block; vertical-align:middle;">
              </a> 
