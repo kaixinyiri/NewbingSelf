@@ -17,54 +17,42 @@
 
     <script>
 
-window.onload= function()  {
-  // 声明一个变量 buttons，并赋值为网页中所有的图片按钮元素
-  var buttons = document.querySelectorAll("input[type='image']");
-  // 使用 for 循环遍历 buttons 数组
-  for (var i = 0; i < buttons.length; i++) {
-    // 给每个图片按钮元素添加一个 click 事件监听器
-    buttons[i].addEventListener("click", async function(event) {
-      // 使用 try...catch 语句来捕获可能发生的错误
-      try {
-        // 获取被点击的图片按钮元素的 id 属性值
-        var buttonId = event.target.id;
-        // 根据 id 属性值，找到对应的 data-file 属性值
-        var file = document.getElementById(buttonId).dataset.file;
-        // 使用 await 关键字来等待 fetch 方法返回一个响应对象
-        var response = await fetch(file);
-        // 检查响应对象的状态码是否是 404
-        if (response.status === 404) {
-          // 如果是 404，表示请求的资源不存在，显示一个错误信息
-          alert("文件不存在，请检查文件地址是否正确");
+window.onload = function() {
+  // 声明一个变量 buttonContainer，并赋值为网页中 id 为 buttonContainer 的元素
+  var buttonContainer = document.getElementById("buttonContainer");
+  // 给 buttonContainer 元素添加一个 click 事件监听器
+  buttonContainer.addEventListener("click", async function(event) {
+    // 声明一个变量 button，并赋值为事件对象的 target 属性，即被点击的按钮
+    var button = event.target;
+    // 声明一个变量 file，并赋值为按钮的 data-file 属性，即文件的地址
+    var file = button.dataset.file;
+    // 使用 try...catch 语句来捕获可能发生的错误
+    try {
+      // 使用 await 关键字来等待 fetch 方法返回一个响应对象
+      var response = await fetch(file);
+      // 检查响应对象的状态码是否是 404
+      if (response.status === 404) {
+        // 如果是 404，表示请求的资源不存在，显示一个错误信息
+        alert("文件不存在，请检查文件地址是否正确");
+      } else {
+        // 如果不是 404，表示请求成功或其他情况，继续获取响应对象的正文内容
+        var text = await response.text();
+        // 检查响应对象的正文内容是否为空
+        if (text) {
+          // 如果不为空，使用 await 关键字来等待 navigator.clipboard.writeText 方法把正文内容复制到剪贴板上
+          await navigator.clipboard.writeText(text);
+          // 显示已经复制到剪贴板上的提示框
+          alert("已复制到剪贴板，请打开软件后按 ctrl+v 进行粘贴");
         } else {
-          // 如果不是 404，表示请求成功或其他情况，继续获取响应对象的正文内容
-          var text = await response.text();
-          // 检查响应对象的正文内容是否为空
-          if (text) {
-	    //await navigator.clipboard.writeText(text);
-            // 如果不为空，创建一个隐藏的 textarea 元素，并把正文内容赋值给它
-            var textarea = document.createElement("textarea");
-            textarea.value = text;
-            textarea.style.display = "none";
-            // 把 textarea 元素添加到网页中，并选中它的内容
-            document.body.appendChild(textarea);
-            textarea.select();
-            // 使用 document.execCommand("copy") 方法把选中的内容复制到剪贴板上，并显示一个提示信息
-            document.execCommand("copy");
-            alert("已复制到剪贴板，请打开软件后按 ctrl+v 进行粘贴");
-            // 把 textarea 元素从网页中移除
-            document.body.removeChild(textarea);
-          } else {
-            // 如果为空，显示一个提示框
-            alert("文件内容为空，请检查文件是否存在或是否有内容");
-          }
+          // 如果为空，显示一个提示框
+          alert("文件内容为空，请检查文件是否存在或是否有内容");
         }
-      } catch (error) {
-        // 在 catch 块中显示复制失败的提示框，并显示错误信息
-        alert("复制失败：" + error);
       }
-    });
-  }
+    } catch (error) {
+      // 在 catch 块中显示复制失败的提示框，并显示错误信息
+      alert("复制失败：" + error);
+    }
+  });
 };
     // 定义一个函数，根据图片的src属性来输入不同的文字	   
     const GRAMMARGPT_INTRO = `
