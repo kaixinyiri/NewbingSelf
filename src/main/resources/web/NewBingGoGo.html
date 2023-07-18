@@ -11,7 +11,11 @@
   width: 300px;
   height: 300px;
 }
-
+#buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 #button1, #button2, #button3 {
   width: 100px;
   height: 100px;
@@ -553,9 +557,11 @@ function inputTextByImage(image) {
 	 <div style="text-align: center;">
              <div id="container">
                  <img src="./img/jiedian.png" alt="流量"  style="width: 70%; display: inline-block; vertical-align:middle;">
-                 <button id="button1">【按钮1】</button>
-                 <button id="button2">【按钮2】</button>
-                 <button id="button3">【按钮3】</button>
+		     <div id="buttonContainer">
+                        <button id="button1">流量1</button>
+                        <button id="button2">流量2</button>
+                        <button id="button3">流量3</button>
+		     </div>
              </div>
                         
              <img src="./img/tixing.png" alt="使用警告"  style="width: 88%; display: inline-block; vertical-align:middle;">
