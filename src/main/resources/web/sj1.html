@@ -97,7 +97,7 @@ for (let i = 0; i < insertPositions.length; i++) {
   newText = insertString(newText, insertIndex, insertText);
 }
 // 更新内容元素的文本内容为新文本
-content.textContent = newText;
+content.textContent = newText.slice(0, 100);
 
 
    // 获取按钮元素
