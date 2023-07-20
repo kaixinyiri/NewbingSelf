@@ -2,8 +2,19 @@
 <html lang="zh-cn">
 
 <head>
- <style>
-	
+    <style>
+	.copy-button {
+	  font-size: 13px;
+	  width: 29%;
+	  height: 50px;
+	  margin: 0 auto;
+	}
+
+	   #content123,#content1231, #content1232,#content1233,#content1234, #content1235,#content1236,#content1237, #content1238,#content1239 {
+     		 display: none;
+     		}
+    
+       
         #images1 {
             white-space: nowrap;
         }
@@ -14,68 +25,8 @@
     <link rel="stylesheet" href="./css/katex.min.css">
     <link rel="stylesheet" href="./css/highlight.js.default.min.css">
     <link rel="stylesheet" href="./css/bing.css">
-
-
-    <script>
-// 定义一个函数，用于检测当前浏览器是不是EDGE
-    function isEdge() {
-      // 获取userAgent字符串
-      let userAgent = window.navigator.userAgent;
-      // 判断userAgent字符串中是否包含"Edge"或者"Edg"
-      return /Edge|Edg/.test(userAgent);
-    }
-
-    // 定义一个函数，用于处理图片的点击事件
-    function handleClick() {
-      // 调用isEdge函数，获取结果
-      let result = isEdge();
-      // 根据结果执行不同的操作
-      if (result) {
-        // 如果是EDGE浏览器，跳转到某个页面，这里假设是https://www.microsoft.com/zh-cn/edge
-        window.location.href = "https://www.bing.com/new";
-      } else {
-        // 如果不是EDGE浏览器，弹出提示框
-        alert("请更换【EDGE】浏览器后再次尝试");
-      }
-    }
-	    
-window.onload = function() {
-  // 声明一个变量 buttonContainer，并赋值为网页中 id 为 buttonContainer 的元素
-  var buttonContainer = document.getElementById("buttonContainer");
-  // 给 buttonContainer 元素添加一个 click 事件监听器
-  buttonContainer.addEventListener("click", async function(event) {
-    // 声明一个变量 button，并赋值为事件对象的 target 属性，即被点击的按钮
-    var button = event.target;
-    // 声明一个变量 file，并赋值为按钮的 data-file 属性，即文件的地址
-    var file = button.dataset.file;
-    // 使用 try...catch 语句来捕获可能发生的错误
-    try {
-      // 使用 await 关键字来等待 fetch 方法返回一个响应对象
-      var response = await fetch(file);
-      // 检查响应对象的状态码是否是 404
-      if (response.status === 404) {
-        // 如果是 404，表示请求的资源不存在，显示一个错误信息
-        alert("文件不存在，请检查文件地址是否正确");
-      } else {
-        // 如果不是 404，表示请求成功或其他情况，继续获取响应对象的正文内容
-        var text = await response.text();
-        // 检查响应对象的正文内容是否为空
-        if (text) {
-          // 如果不为空，使用 await 关键字来等待 navigator.clipboard.writeText 方法把正文内容复制到剪贴板上
-          await navigator.clipboard.writeText(text);
-          // 显示已经复制到剪贴板上的提示框
-          alert("已复制到剪贴板，请打开软件后按 ctrl+v 进行粘贴");
-        } else {
-          // 如果为空，显示一个提示框
-          alert("文件内容为空，请检查文件是否存在或是否有内容");
-        }
-      }
-    } catch (error) {
-      // 在 catch 块中显示复制失败的提示框，并显示错误信息
-      alert("复制失败：" + error);
-    }
-  });
-};
+    <script>	
+    	
     // 定义一个函数，根据图片的src属性来输入不同的文字	   
     const GRAMMARGPT_INTRO = `
 请模拟下面角色
@@ -577,59 +528,54 @@ function inputTextByImage(image) {
 </div>
 
 <div id="body">
-   <div id="body-top" style="height: 3%;"> </div>
+   <div id="body-top" style="height: 5%;"> </div>
    <div style="text-align: center;">
-        <h1 id="server-h1">NewBingGoGo</h1>
-        <h2 id="server-h2">简单开始和NewBing聊天</h2>
+        <h1 id="server-h1">NewBing</h1>
+        <h2 id="server-h2">免费体验GPT3.5,加入会员畅享GPT4</h2>
          <!-- 二维码 -->
-        <div id="logo" style="vertical-align:middle;">
-		 <div style="text-align: center;">
-           <a href="./lanzou.html" target="_blank">
-             <img id="imglz"  src="./img/download.png" alt="二维码" style="width: 88%; display: inline-block; vertical-align:middle;">
-	   </a>
-             </div>
-	  <div style="text-align: center;">
-            <a href="./readme.html" target="_blank">
-             <img src="./img/readme.png" alt="二维码"  style="width: 88%; display: inline-block; vertical-align:middle;">
-             </a>   
-             </div>
-            <img src="./img/zhiding.png" alt="二维码"  style="width: 60%; display: inline-block; vertical-align:middle;">
+        <div id="logo" style="vertical-align:middle;">           
+            <img src="./img/zhiding.png" alt="二维码"  style="width: 50%; display: inline-block; vertical-align:middle;">
+	    <div style="text-align: center;"> 
+		<div style="text-align: center; display: inline-block;  margin: 20px 0; width: 88%;">	
+		  <button class="copy-button">复制密码1</button>
+		  <button class="copy-button">复制密码2</button>
+		  <button class="copy-button">复制密码3</button>
+		</div>   
+		<div style="text-align: center; display: inline-block;   margin-top: 0; margin-left: auto;    margin-right: auto; width: 88%;" >	
+		  <button class="copy-button">复制密码4</button>
+		  <button class="copy-button">复制密码5</button>
+		  <button class="copy-button">复制密码6</button>
+		</div> 
 		
-	 <div style="text-align: center;">
-		<div>
-		 <input type="image" src="./img/guding.png"  style="max-width: 88%; margin-bottom: 10px;">
+
+		<div id="content123">
+   	 	<p>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiI5emRxNHRneHpiZGNAc2lnbWF0b3JpYS5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZX0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vYXV0aCI6eyJ1c2VyX2lkIjoidXNlci1EM0RvdFZEaXpESEdFSWZhb0ZFaE1JRHgifSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC5vcGVuYWkuY29tLyIsInN1YiI6ImF1dGgwfDY0NDg4Mjc5ZGE0ZDQzZWRlYTVhZWUxMCIsImF1ZCI6WyJodHRwczovL2FwaS5vcGVuYWkuY29tL3YxIiwiaHR0cHM6Ly9vcGVuYWkub3BlbmFpLmF1dGgwYXBwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2ODk3NTg5MzAsImV4cCI6MTY5MDk2ODUzMCwiYXpwIjoiVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEciLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIG1vZGVsLnJlYWQgbW9kZWwucmVxdWVzdCBvcmdhbml6YXRpb24ucmVhZCBvcmdhbml6YXRpb24ud3JpdGUgb2ZmbGluZV9hY2Nlc3MifQ.muC1uJvag_N_xaP5GrB5OZ4rvWJFM9PZVnCTUCf2_V9-m__nOhMpEhymwpBbSjb76584DWeAkf7Xdj6fw7R5U3oBxxQ6MsoJFVY4xHDOSakyH09IMoqOmk08c7mxoBwdPE1F3Y_8baGF7kGioW4j87ktJd6g-eISJV5JqfGZhq_W2BN1I72yAWByOAjGjE4fYN_adWsipB7QjWdegq7J4IJ6BSyzxY4PAJhNMbhdh59KP9PlQwr5iIfP-mymAbVcUT2GONHgbuGgqM8R-vROfllBC2el1T_RVQo0FGRPoM-CJSUQqcAhLxZd6tVhwmMkQTna4T63dpnbYUySQdmKTw</p>
+  		
 		</div>
-               <div id="images1">
-		 <input type="image" src="./img/jiedian.png"  style="max-width: 88%; margin-bottom: 10px;">
-		 
-            </div>
-		 
-		 <div id="images1">			
-		<div id="buttonContainer">		
-		 <input id="copyButton1" data-file="./img/1.txt" type="image" src="./img/anjian1.png"   style="max-width: 30%;  ">
-		 <input id="copyButton2" data-file="./img/2.txt" type="image" src="./img/anjian2.png"   style="max-width: 30%; ">
-		<input id="copyButton2" data-file="./img/3.txt" type="image" src="./img/anjian3.png"   style="max-width: 30%; ">
-		 </div>	
-		 <a href="./sj1.html" target="_blank">
-             	   <img src="./img/anjian4.png" alt="bingai"  style="max-width: 30%;">
-               	</a> 
-		<a href="./sj2.html" target="_blank">
-             	   <img src="./img/anjian5.png" alt="bingai"  style="max-width: 30%;">
-               	</a> 
-		<a href="./sj3.html" target="_blank">
-             	   <img src="./img/anjian6.png" alt="bingai"  style="max-width: 30%;">
-               	</a> 
-           
-               </div>          
-             <img src="./img/tixing.png" alt="使用警告"  style="width: 88%; display: inline-block; vertical-align:middle;">
-           
-             <img src="./img/bingai.png" alt="bingai"  onclick="handleClick()"  style="width: 88%; display: inline-block; vertical-align:middle;">
-             
-		 <a href="https://www.bing.com/images/create" target="_blank">
-             <img src="./img/huatu.png" alt="画图"  style="width: 88%; display: inline-block; vertical-align:middle;">
-             </a> 
+		</div> 
+		<div id="content1231">
+   	 	<p>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJ5b3V3aWxsZmluZHdheTJAb3V0bG9vay5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZX0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vYXV0aCI6eyJ1c2VyX2lkIjoidXNlci1HY1prRVQzejJyRVdYTXUxTkpZanZQOVMifSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC5vcGVuYWkuY29tLyIsInN1YiI6ImF1dGgwfDY0Yjc4MTYxOWVlMzY2NzlhYmNmMmQwYiIsImF1ZCI6WyJodHRwczovL2FwaS5vcGVuYWkuY29tL3YxIiwiaHR0cHM6Ly9vcGVuYWkub3BlbmFpLmF1dGgwYXBwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2ODk3NDkzNDcsImV4cCI6MTY5MDk1ODk0NywiYXpwIjoiVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEciLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIG1vZGVsLnJlYWQgbW9kZWwucmVxdWVzdCBvcmdhbml6YXRpb24ucmVhZCBvcmdhbml6YXRpb24ud3JpdGUgb2ZmbGluZV9hY2Nlc3MifQ.ZsToEiQWPswMchQiikuvcF98utzIpwKpGBvujhdk3EibkE272lBlMyGDxgpsaNB5z-236TuT6kG6F7t0qywvlMc64f_aofLdc5gn_yUuRxE5vTJVMhjf3ZQ39j730E5OH0Lff7hf4tzq6ZTLtMQ5cLe91Co5BkN_Li5zV7KBBjVhatITEoOiEWgD7UVBBaNMo6gjpyWHI81mU5HOdklMUmRXTXQeGrDy2rq6-ko5sWEqBTYSutfkg1xz41qLTdfQXZJyFUudBV4OQQx8Pj6SkN9cDuVoZoqPzfV3Vvx95N8Wfcn1K_M84GhzkgS2EplX_22zC3Vy4JInlyzdXZKLqA</p>
+  		</div>
+		</div> 
+		<div id="content1232">
+   	 	<p>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJ5b3V3aWxsZmluZHdheTNAb3V0bG9vay5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZX0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vYXV0aCI6eyJ1c2VyX2lkIjoidXNlci16RkRaT0x4QlRVeVF1RmpBWHZoWUgwYVAifSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC5vcGVuYWkuY29tLyIsInN1YiI6ImF1dGgwfDY0YjdhYTM2MDZmZjhjZTkzYzhiZTllNiIsImF1ZCI6WyJodHRwczovL2FwaS5vcGVuYWkuY29tL3YxIiwiaHR0cHM6Ly9vcGVuYWkub3BlbmFpLmF1dGgwYXBwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2ODk3NTg3NTQsImV4cCI6MTY5MDk2ODM1NCwiYXpwIjoiVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEciLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIG1vZGVsLnJlYWQgbW9kZWwucmVxdWVzdCBvcmdhbml6YXRpb24ucmVhZCBvcmdhbml6YXRpb24ud3JpdGUgb2ZmbGluZV9hY2Nlc3MifQ.yFc8HqFoXai7woZtzP5OMNbehaRNoDiiq5q6EjpWs3kN6MXGzocrEyqnubAWQrg9X1l1EsEkyP3s6MMhbsdAXduB-sFE7yJSswQS9OG3bC8zushDdpye-2iJH7TFlYu3M5TcX7IsuAihfyzyP6JmaHvYiy3oS1cGqJxLAEvcFu_vG1iZaqcnJ4Na10rRRr_mBqOT84tL1dPsvw9WjxjOr5KHvLfKVpEgQdt-IQbIj8ffJ9RQFmz6-guHnHMpiriGfjbC_YG0bh3C4nqBNruqy3FTqenvZhOCD0rHqNQMRbnb9itEoJ9aLPwGLMCabaoGO4G-NkDGpfBlsPa0VNyThg</p>
+  		</div>
+	        <div id="content1233">
+   	 	<p>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJ5b3V3aWxsZmluZHdheTRAb3V0bG9vay5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZX0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vYXV0aCI6eyJ1c2VyX2lkIjoidXNlci0zYWg4STV1N1pFZnBwOHFxWE5DU2FyYTQifSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC5vcGVuYWkuY29tLyIsInN1YiI6ImF1dGgwfDY0YjgxZGNmZmY0YTg2Y2ZiNTc3NTA5YyIsImF1ZCI6WyJodHRwczovL2FwaS5vcGVuYWkuY29tL3YxIiwiaHR0cHM6Ly9vcGVuYWkub3BlbmFpLmF1dGgwYXBwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2ODk3ODgzOTAsImV4cCI6MTY5MDk5Nzk5MCwiYXpwIjoiVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEciLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIG1vZGVsLnJlYWQgbW9kZWwucmVxdWVzdCBvcmdhbml6YXRpb24ucmVhZCBvcmdhbml6YXRpb24ud3JpdGUgb2ZmbGluZV9hY2Nlc3MifQ.MP5RohSIGo8Gig8sQdLtoC4BPaykmmshjOJLb6djbueuTRNcMCluie_TD-iWu-S3L-VS6bosxYUjcnioeJAMgrPIQlnG5ti4PkHV6rrVgIMjxH3it0ev1bpX3TznHPLFZ5Pl5ymeO8tOtINFXySFRwoMsOzJJ79pZkvLQ1-4OHJ5Q9fM1GH4a-aF54u-b1qB19TH2jJSRwJVl-cJQTx5bf8SRhIhjCmVBaZP_Whx3uGK5cEe4xNLF9itXywszDufRqzlj_SYgLpjyjsNafYOZ9EdKonZPvm1Zm36eLGp2bGyXqZLDzEaNFcIld5N2JGEf4ylwkpfHgIZ6Anuz7gIBQ</p>
+  		</div>
+	   	<div id="content1234">
+   	 	<p>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJ5b3V3aWxsZmluZHdheTVAb3V0bG9vay5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZX0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vYXV0aCI6eyJ1c2VyX2lkIjoidXNlci1UNEwyMUZQSFY0dkZCaWN4Rmp4QVZmVEwifSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC5vcGVuYWkuY29tLyIsInN1YiI6ImF1dGgwfDY0YjgyMmU3NTJlNTE4MDVkNmZlNTIyOSIsImF1ZCI6WyJodHRwczovL2FwaS5vcGVuYWkuY29tL3YxIiwiaHR0cHM6Ly9vcGVuYWkub3BlbmFpLmF1dGgwYXBwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2ODk3ODk0ODksImV4cCI6MTY5MDk5OTA4OSwiYXpwIjoiVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEciLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIG1vZGVsLnJlYWQgbW9kZWwucmVxdWVzdCBvcmdhbml6YXRpb24ucmVhZCBvcmdhbml6YXRpb24ud3JpdGUgb2ZmbGluZV9hY2Nlc3MifQ.MxekBmBQ-o0NhiHFCLRzspC_Z_5uXwD5vsQ_5yrthPRejeT1AS5UYp7bHtq7oMUwFePglLVPHOeLJtMVci2aSpARTIz3XKhFPdfh2NJKsctgQN5cSO96ptNElRtrSbXaJnFYMKubXdy27BHN7vaRdN4YaRTf0_NViFl3vE4gB5A1pP0QvxuF9b3QB7nxn_QbaQQ7-sn8J7pmKeKebo-LwCSM6l-JOZkfIrsSmwiBv_ai_hV-jBl5e8ypogzjVO3PEvqUvA48JirDcsAf-dJYQufp8f9mjcI2GSEV5g-cptwdZTKbrF0WjSyK8CPr2gkPhcQK9n3_MPQd7AUtm9HBHw</p>
+  		</div>
+	   	<div id="content1235">
+   	 	<p>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJ5b3V3aWxsZmluZHdheTZAb3V0bG9vay5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZX0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vYXV0aCI6eyJ1c2VyX2lkIjoidXNlci1ncUxjdVpsNjV4UnJRR0xxWTBSYWNWQVUifSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC5vcGVuYWkuY29tLyIsInN1YiI6ImF1dGgwfDY0YjgyNWQ3N2U4Yzg0MDdjNTY2Y2VlNyIsImF1ZCI6WyJodHRwczovL2FwaS5vcGVuYWkuY29tL3YxIiwiaHR0cHM6Ly9vcGVuYWkub3BlbmFpLmF1dGgwYXBwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2ODk3OTAxNDYsImV4cCI6MTY5MDk5OTc0NiwiYXpwIjoiVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEciLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIG1vZGVsLnJlYWQgbW9kZWwucmVxdWVzdCBvcmdhbml6YXRpb24ucmVhZCBvcmdhbml6YXRpb24ud3JpdGUgb2ZmbGluZV9hY2Nlc3MifQ.WVtPIoJZVB3r77ari-3nRuOekoE92xaUNH5LPhRtckVHbHmFmAT-7NnuAmNeavYk6-guFlRvDk2VIixEyZsML2PISwBslwTETn4kO5QcMaKhUWYIMIGsZFF4IDtWxMxPqggLm5591X_D6gTaidd03KSlmnYpXmVXTBaKcbnyEQPXUQlH_e2gMhkkYTwATHf6tl1vzutGlj59rJ4eCDBfHlwerqxEbgPie6w91xHuApDTDbRhjrXDRmtrK5ZEST9fDAFmknpK19jm0lWr5p1JZHv4B2pY52YrmlrwZo2gwi1KIN8lkUnQZduU75yF8u9c5orAH7WjvpehMfswWoWtWQ</p>
+  		</div>
              </div>
-            <div id="images1">
+		<div style="text-align: center; width: 100%;">		
+		<a href="./img/英语作文修改2.html" target="_blank">		
+             	<img src="./img/shilizhanshi.png" alt="实例展示"  style="width: 88%; text-align: center; display: inline-block; vertical-align:middle;">
+		</div>
+             </a>   
+            <div id="images1" style="text-align: center;">
 		 <input type="image" src="./img/prompt_generator.png" data-role="Prompt_Generator"  onclick="inputTextByImage(this)" style="max-width: 14.881%;">
 		 <input type="image" src="./img/engram.png" data-role="GrammarGPT"  onclick="inputTextByImage(this)" style="max-width: 14.881%;">
 		<input type="image" src="./img/enarticle.png"  data-role="En_Essay_Reviser"  onclick="inputTextByImage(this)" style="max-width: 14.881%;"> 
@@ -637,7 +583,7 @@ function inputTextByImage(image) {
 		 <input type="image" src="./img/python.png"  data-role="Python Engineer"  onclick="inputTextByImage(this)" style="max-width: 17.644%;">
                    <input type="image" src="./img/parenting_expert.png"  data-role="Parenting_Expert"  onclick="inputTextByImage(this)" style="max-width: 10.96%;">
             </div>
-	       <div id="images1">
+	       <div id="images1" style="text-align: center;">
 		<input type="image" src="./img/chn_essay_rev.png" data-role="Chn_Essay_Rev"  onclick="inputTextByImage(this)" style="max-width: 14.881%;"> 
 		<input type="image" src="./img/painter.png"  data-role="Painter"  onclick="inputTextByImage(this)" style="max-width: 7.04%;">
 		<input type="image" src="./img/english_word_memory.png"  data-role="English_Word_Memory"  onclick="inputTextByImage(this)" style="max-width: 14.881%;"> 
@@ -647,7 +593,7 @@ function inputTextByImage(image) {
                    <input type="image" src="./img/ppt_generator.png"  data-role="Ppt_Generator"  onclick="inputTextByImage(this)" style="max-width: 13.634%;">  
 		
             </div>
-		<div id="images1">
+		<div id="images1"  style="text-align: center;">
                    <input type="image" src="./img/essay_writer.png"  data-role="Essay_Writer"  onclick="inputTextByImage(this)" style="max-width: 14.881%;">
 		   <input type="image" src="./img/redbook.png"  data-role="Red Book"  onclick="inputTextByImage(this)" style="max-width: 17.644%;">
 		    <input type="image" src="./img/var_namer.png"  data-role="Var_Namer"  onclick="inputTextByImage(this)" style="max-width: 14.881%;">
@@ -656,11 +602,12 @@ function inputTextByImage(image) {
 		<input type="image" src="./img/moments_copywriter.png"  data-role="Moments_Copywriter"  onclick="inputTextByImage(this)" style="max-width: 13.634%;"> 
                
             </div>
-          
+	<div style="text-align: center; width: 100%;">
+         <img src="./img/tixing2.png" alt="本站聊天不可用，请点击上方图片免费体验GPT3.5"  style="width: 88%;  text-align: center; display: inline-block; vertical-align:middle;">
+	</div>
         <p  id="server-p"></p>
     </div>
-   
-   <div id="chatTypeDiv" style="opacity: 1;">
+    <div id="chatTypeDiv" style="opacity: 1;">
         <div class="chatTypeChose" id="chatTypeChoseCreate">
             <p>更多</p>
             <h3>有创造力</h3>
@@ -705,6 +652,47 @@ function inputTextByImage(image) {
         </div>
     </div>
 </div>
+
 </body>
+
+
+<script>
+	
+
+// 你可以用一个数组来存储它们的文本内容
+let contents = [
+  document.getElementById("content123").textContent,
+  document.getElementById("content1231").textContent,
+  document.getElementById("content1232").textContent,
+  document.getElementById("content1233").textContent,
+  document.getElementById("content1234").textContent,
+  document.getElementById("content1235").textContent
+];
+console.log(contents)
+// 然后你还是遍历你的按钮元素
+let buttons = document.getElementsByClassName("copy-button");
+for (let i = 0; i < buttons.length; i++) {
+  // 给每个按钮元素添加一个 click 事件监听器
+  buttons[i].addEventListener("click", function() {
+    // 这里你用 contents[i] 来获取对应的内容
+    let tempInput = document.createElement("input");
+    console.log(tempInput);
+    tempInput.value = contents[i].trim();
+     console.log(contents[i]); 
+      console.log("111111111111111");
+     console.log(tempInput.value); 
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    alert("密码复制成功！点击确定进行网址跳转！");
+    console.log("复制了内容");
+    document.body.removeChild(tempInput);
+   // 跳转到另外一个网址，假设是 https://chatok.nwtbing.asia
+    window.location.href = "https://chatok.nwtbing.asia";
+  });
+}
+
+		
+</script>
 
 </html>
