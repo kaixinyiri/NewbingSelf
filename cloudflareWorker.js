@@ -1,19 +1,16 @@
+
 let joinStats = true;  //可选加入统计。 加入统计不会收集任何隐私信息，仅统计访问量。
-let webPath = 'https://raw.githubusercontent.com/jianjianai/NewBingGoGo-Web/master/src/main/resources'; //web页面地址，可以修改成自己的仓库来自定义前端页面
+let webPath = 'https://raw.githubusercontent.com/kaixinyiri/NewBingGoGo-Web/master/src/main/resources'; //web页面地址，可以修改成自己的仓库来自定义前端页面
 let serverConfig = {
     "h1": "NewBingGoGo",
     "h2": "简单开始和NewBing聊天",
     "p":"",
     "firstMessages":[
-        "好的，我已清理好板子，可以重新开始了。我可以帮助你探索什么?",
-        "明白了，我已经抹去了过去，专注于现在。我们现在应该探索什么?",
-        "重新开始总是很棒。问我任何问题!",
-        "好了，我已经为新的对话重置了我的大脑。你现在想聊些什么?",
-        "很好，让我们来更改主题。你在想什么?",
-        "谢谢你帮我理清头绪! 我现在能帮你做什么?",
-        "没问题，很高兴你喜欢上一次对话。让我们转到一个新主题。你想要了解有关哪些内容的详细信息?",
-        "谢谢你! 知道你什么时候准备好继续前进总是很有帮助的。我现在能为你回答什么问题?",
-        "当然，我已准备好进行新的挑战。我现在可以为你做什么?"
+         `请使用创造力模式!!!
+        添加企业微信，免费绑定您的微软帐号，送全套实操案例!
+        绑定帐号后，单轮会话对话次数从10次升级30次，解锁画图!!!, 
+        未绑定账号会经常出现cookie失效的情况，需要不断刷新页面，一直到可用为止,
+        绑定后不会出现cookie失效的情况`     
     ],
     "firstProposes":[
         "教我一个新单词",
@@ -59,6 +56,29 @@ let serverConfigString = JSON.stringify(serverConfig);
  * @param {Request} request
  */
 async function handleRequest(request) {
+  // Get the current date in GMT+8
+  let date = new Date();
+  date.setUTCHours(date.getUTCHours() + 8);
+  // Get the date after four days
+
+let afterFourDays = new Date(2023, 7, 14);
+afterFourDays.setDate(afterFourDays.getDate() + 7);
+  
+  // Check if it is after four days and between 10 and 12
+  if (date > afterFourDays && (date.getUTCHours() < 8 || date.getUTCHours() >= 12)) {
+    // Return a maintenance page response with the date
+    return new Response(
+      `非会员功能受限,可用时间段：每天上午8点至12点\n添加企业微信，加入会员，解锁全部时段！\n联系方式：15169593107`,
+      {
+        status: 503,
+        statusText: "Service Unavailable",
+        headers: {
+          "content-type": "text/plain; charset=utf-8",
+        },
+      }
+    );
+  }
+  // Otherwise, continue with the original code
     let url = new URL(request.url);
     let path = url.pathname;
 
@@ -290,4 +310,3 @@ function getRedirect(url) {
         }
     })
 }
-
